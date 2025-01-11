@@ -1,0 +1,31 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amazon scraper</title>
+    <link rel="stylesheet" href="/static/style.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>amazon product scraper</h1>
+        <form action="/scrape_amazon/" method="post">
+            <label for="input_value">Enter Amazon Product URL or ASIN:</label><br>
+            <input type="text" id="input_value" name="input_value" required><br><br>
+            <button type="submit">Scrape Product</button>
+        </form>
+
+        {% if product %}
+            <div class="product-info">
+                <h2>Product Information:</h2>
+                <p><strong>Product Name:</strong> {{ product.product_name }}</p>
+                <p><strong>Price:</strong> {{ product.price }}</p>
+                <p><strong>Condition:</strong> {{ product.grade }}</p>
+                <p><strong>DEBUG ONLY - URL:</strong> {{ dbg_url }}</p>
+                <p><strong>DEBUG ONLY - ASIN:</strong> {{ dbg_asin }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
